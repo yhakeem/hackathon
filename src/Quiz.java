@@ -24,7 +24,6 @@ public class Quiz implements ActionListener {
 
     };
     //skipped on guess and correct guess because we are not measuring that way see video at 12:24
-    char answer;
     int index;
     int total_questions=questions.length;
     int result;
@@ -52,12 +51,10 @@ public class Quiz implements ActionListener {
     JLabel answer_labelD=new JLabel ();
 
     //category selection
+    JTextArea percentage = new JTextArea ();
 
 
-    JTextField percentage = new JTextField ();
-
-
-    //create constructor
+    // constructor
     public Quiz(){
         //frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,6 +62,7 @@ public class Quiz implements ActionListener {
         frame.setVisible(true);
         frame.getContentPane().setBackground(new Color(255,182,193));
         frame.setLayout(null);
+        frame.setResizable(false);
 
         frame.add(textfield);
         frame.add(textarea);
@@ -150,13 +148,16 @@ public class Quiz implements ActionListener {
         answer_labelD.setForeground(new Color(255,255,255));
         answer_labelD.setFont(new Font("Ink Well",Font.PLAIN,25));
 
-        percentage.setBounds(500,400,1000,700);
+        percentage.setBounds(125,100,500,300);
         percentage.setBackground(new Color(255,255,255));
         percentage.setForeground(new Color(255,182,193));
         percentage.setFont(new Font("Ink Well",Font.PLAIN,25));
         percentage.setBorder(BorderFactory.createBevelBorder(1));
-        percentage.setHorizontalAlignment(JTextField.CENTER);
+        percentage.setLineWrap( true );
+        percentage.setWrapStyleWord( true );
+        percentage.setSize(400, 300);
         percentage.setEditable(false);
+
         //call this method to begin quiz
         nextQuestion();
 
@@ -168,7 +169,7 @@ public class Quiz implements ActionListener {
         if(index>=total_questions){
             results();
         }else{
-            textfield.setText("Question" + (index+1));
+            textfield.setText("Question " + (index+1));
             //displays question being asked
             textarea.setText(questions[index]);
             answer_labelA.setText(options[index][0]);
@@ -221,9 +222,9 @@ public class Quiz implements ActionListener {
         int mostAnswered=Math.max(max1,max2);
 
         if(mostAnswered==a){
-           description="You have a more creative personality type";
+           description="You have a more creative personality type/You have a more creative personality type..You have a more creative personality type/";
            techieType="CREATIVE Tech";
-           String image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpv1uq1OavTw0yxxnA1yQhqkdBefpf5ihvBg&usqp=CAU";
+
         }else if(mostAnswered==b){
             description="You have a logical personality type";
             techieType="Logical Tech";
@@ -245,20 +246,9 @@ public class Quiz implements ActionListener {
         answer_labelB.setText("");
         answer_labelC.setText("");
         answer_labelD.setText("");
-//
-//        //to add image in results
-//        Container c = frame.getContentPane(); //Gets the content layer
-//
-//
-//        JLabel picture= new JLabel();
-//        picture.setIcon(new ImageIcon("https://www.google.com/url?sa=i&url=https%3A%2F%2Fnorthpeak.io%2Fui-vs-ux-design%2F&psig=AOvVaw23ZBUshA7dJYjTKfbtImaC&ust=1664913637947000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCLiG9NrvxPoCFQAAAAAdAAAAABAD"));
-//        Dimension size = picture.getPreferredSize();
-//        picture.setBounds(50, 30, size.width, size.height);
-//
-//        c.add(picture); //Adds objects to the container
-//        frame.setVisible(true); // Exhibit the frame
 
-        percentage.setText("You are" + result+"%" + "a " + techieType + "! " + description );
+
+        percentage.setText("You are " + result+"%" + "a " + techieType + "! " + description );
 
         //add to frame to view the percentage
         frame.add(percentage);
