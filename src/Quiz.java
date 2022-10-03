@@ -50,8 +50,9 @@ public class Quiz implements ActionListener {
     JLabel answer_labelB=new JLabel ();
     JLabel answer_labelC=new JLabel ();
     JLabel answer_labelD=new JLabel ();
+
     //category selection
-    // JLabel numberA=newJ
+
 
     JTextField percentage = new JTextField ();
 
@@ -78,7 +79,6 @@ public class Quiz implements ActionListener {
         frame.add(answer_labelC);
         frame.add(answer_labelD);
 
-//    frame.add(percentage);
 
 //text fields
         textfield.setBounds(0,0,650,50);
@@ -149,10 +149,10 @@ public class Quiz implements ActionListener {
         answer_labelD.setBackground(new Color(255,182,193));
         answer_labelD.setForeground(new Color(255,255,255));
         answer_labelD.setFont(new Font("Ink Well",Font.PLAIN,25));
-//        answer_labelD.setText("TESTING ");
-        percentage.setBounds(225,325,200,100);
+
+        percentage.setBounds(500,400,1000,700);
         percentage.setBackground(new Color(255,255,255));
-        percentage.setForeground(new Color(255,255,255));
+        percentage.setForeground(new Color(255,182,193));
         percentage.setFont(new Font("Ink Well",Font.PLAIN,25));
         percentage.setBorder(BorderFactory.createBevelBorder(1));
         percentage.setHorizontalAlignment(JTextField.CENTER);
@@ -207,26 +207,61 @@ public class Quiz implements ActionListener {
 
     //display results
     public void results(){
+        //so they cant keep clicking
         buttonA.setEnabled(false);
         buttonB.setEnabled(false);
         buttonC.setEnabled(false);
         buttonD.setEnabled(false);
 
         //Make function to see which category has most of the answers
+        String description;
+        String techieType;
         int max1=Math.max(a,b);
         int max2=Math.max(c,d);
-        int finalResult=Math.max(max1,max2);
+        int mostAnswered=Math.max(max1,max2);
 
-        if(finalResult==a){
-            System.out.println("You have a more creative personality type");
-        }else if(finalResult==b){
-            System.out.println("You have a logical personality type");
-        }else if(finalResult==c){
-            System.out.println("You have a wise personality type");
+        if(mostAnswered==a){
+           description="You have a more creative personality type";
+           techieType="CREATIVE Tech";
+           String image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpv1uq1OavTw0yxxnA1yQhqkdBefpf5ihvBg&usqp=CAU";
+        }else if(mostAnswered==b){
+            description="You have a logical personality type";
+            techieType="Logical Tech";
+        }else if(mostAnswered==c){
+            description="You have a wise personality type";
+            techieType="Leader Tech";
         }else{
-            System.out.println("You have a emphatitic poerosality type"  );
+            description="You have a emphatitic poerosality type";
+            techieType="Empath Tech";
         }
 
+        //calulates the percentage in a whole number
+        result = (int)((mostAnswered/(double)total_questions)*100);
+
+        //to display results
+        textfield.setText("Your Results!");
+        textarea.setText("");
+        answer_labelA.setText("");
+        answer_labelB.setText("");
+        answer_labelC.setText("");
+        answer_labelD.setText("");
+//
+//        //to add image in results
+//        Container c = frame.getContentPane(); //Gets the content layer
+//
+//
+//        JLabel picture= new JLabel();
+//        picture.setIcon(new ImageIcon("https://www.google.com/url?sa=i&url=https%3A%2F%2Fnorthpeak.io%2Fui-vs-ux-design%2F&psig=AOvVaw23ZBUshA7dJYjTKfbtImaC&ust=1664913637947000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCLiG9NrvxPoCFQAAAAAdAAAAABAD"));
+//        Dimension size = picture.getPreferredSize();
+//        picture.setBounds(50, 30, size.width, size.height);
+//
+//        c.add(picture); //Adds objects to the container
+//        frame.setVisible(true); // Exhibit the frame
+
+        percentage.setText("You are" + result+"%" + "a " + techieType + "! " + description );
+
+        //add to frame to view the percentage
+        frame.add(percentage);
 
     }
 }
