@@ -250,7 +250,9 @@ public class Quiz implements ActionListener  {
         answer_labelD.setText("");
 
 
-        percentage.setText("You are " + result+"%" + "a " + techieType + "! " + description + devData);
+String careerData=DevData.getInfo();
+        System.out.println(careerData);
+        percentage.setText("You are " + result+"%" + "a " + techieType + "! " + description + careerData );
 
         //add to frame to view the percentage
         frame.add(percentage);

@@ -20,9 +20,10 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 public class DevData {
+    private static String info;
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-
+        DevData devData=new DevData();
 
         URI uri = new URIBuilder()
 
@@ -59,11 +60,11 @@ public class DevData {
             HttpEntity entity = response.getEntity();
 
             String result =EntityUtils.toString(entity);
-            System.out.println(result);
-            //System.out.println(result.indexOf("105550"));
-            //System.out.println("Job Description: "+result.substring(385,532)+"Median Salary:$"+result.substring(1634,1640));
-            String info="Job Description: "+result.substring(385,532)+"Median Salary:$"+result.substring(1634,1640);
-            System.out.println(info);
+            //System.out.println(result);
+            String data="Job Description: "+result.substring(385,532)+"Median Salary:$"+result.substring(1634,1640);
+//            devData.info=data;
+            devData.setInfo(data);
+           // System.out.println(info);
 
         } finally {
 
@@ -78,5 +79,18 @@ public class DevData {
 
 
     }
+
+
+    // Setter
+    public void setInfo(String value) {
+        this.info = value;
+    }
+
+    // Getter
+    public static String getInfo() {
+        return info ;
+    }
+
+
 
 }
