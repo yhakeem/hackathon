@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Quiz implements ActionListener {
+public class Quiz implements ActionListener  {
+    DevData devData=new DevData();
+
     //array of questions
     String[] questions ={
             "How would you describe yourself?",
@@ -248,7 +250,7 @@ public class Quiz implements ActionListener {
         answer_labelD.setText("");
 
 
-        percentage.setText("You are " + result+"%" + "a " + techieType + "! " + description );
+        percentage.setText("You are " + result+"%" + "a " + techieType + "! " + description + devData);
 
         //add to frame to view the percentage
         frame.add(percentage);
