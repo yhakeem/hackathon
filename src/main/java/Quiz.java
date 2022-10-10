@@ -3,10 +3,13 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 
 public class Quiz implements ActionListener  {
-    DevData devData=new DevData();
+
+
 
     //array of questions
     String[] questions ={
@@ -57,7 +60,7 @@ public class Quiz implements ActionListener  {
 
 
     // constructor
-    public Quiz(){
+    public Quiz()  {
         //frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(650,650);
@@ -195,8 +198,8 @@ public class Quiz implements ActionListener  {
             b += 1;
         } else if (e.getSource() == buttonC) {
             c += 1;
-        } else if (e.getSource() == buttonC) {
-            c += 1;
+        } else if (e.getSource() == buttonD) {
+            d+= 1;
         }
 
         //to go to next q increase index
@@ -215,28 +218,14 @@ public class Quiz implements ActionListener  {
         buttonB.setEnabled(false);
         buttonC.setEnabled(false);
         buttonD.setEnabled(false);
-
         //Make function to see which category has most of the answers
         String description;
-        String techieType;
+
+
+
         int max1=Math.max(a,b);
         int max2=Math.max(c,d);
         int mostAnswered=Math.max(max1,max2);
-
-        if(mostAnswered==a){
-           description="You have a more creative personality type/You have a more creative personality type..You have a more creative personality type/";
-           techieType="CREATIVE Tech";
-
-        }else if(mostAnswered==b){
-            description="You have a logical personality type";
-            techieType="Logical Tech";
-        }else if(mostAnswered==c){
-            description="You have a wise personality type";
-            techieType="Leader Tech";
-        }else{
-            description="You have a emphatitic poerosality type";
-            techieType="Empath Tech";
-        }
 
         //calulates the percentage in a whole number
         result = (int)((mostAnswered/(double)total_questions)*100);
@@ -249,10 +238,43 @@ public class Quiz implements ActionListener  {
         answer_labelC.setText("");
         answer_labelD.setText("");
 
+        String careerData;
+       String careerChoice="";
 
-String careerData=DevData.getInfo();
-        System.out.println(careerData);
-        percentage.setText("You are " + result+"%" + "a " + techieType + "! " + description + careerData );
+
+        if(mostAnswered==a){
+            description="Software Developer";
+            careerChoice="15-1252.00";
+
+        }else if(mostAnswered==b){
+            description="UX/UI Designer";
+            careerChoice="15-1255.00";
+
+        }else if(mostAnswered==c){
+            description="Solution Architect";
+            careerChoice="15-1299.08";
+
+        }else if (mostAnswered==d){
+            description="Cyber Security Specialist";
+            careerChoice="15-1299.05";
+
+        }else{
+            description="Please try again";
+        }
+
+
+
+        try{
+            DevData devData=new DevData(careerChoice);
+            careerData=devData.getInfo();
+        }catch(Exception e){
+             careerData="Career data not available";
+        }
+
+
+
+
+        percentage.setText("You are " + result+"%" + " a "  + description + "! " + careerData );
 
         //add to frame to view the percentage
         frame.add(percentage);

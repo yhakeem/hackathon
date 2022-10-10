@@ -20,10 +20,11 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 public class DevData {
-    private static String info;
+    private  String info;
+    public String data;
+//constuctor
+    public DevData(String keyword) throws URISyntaxException, IOException {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
-        DevData devData=new DevData();
 
         URI uri = new URIBuilder()
 
@@ -33,7 +34,7 @@ public class DevData {
 
                 .setPath("/v1/comparesalaries/xflCdZWW2l8zbe8/wage")
 
-                .setParameter("keyword", "15-1252.00")
+                .setParameter("keyword", keyword)
 
                 .setParameter("location", "Chicago,IL")
 
@@ -61,10 +62,22 @@ public class DevData {
 
             String result =EntityUtils.toString(entity);
             //System.out.println(result);
-            String data="Job Description: "+result.substring(385,532)+"Median Salary:$"+result.substring(1634,1640);
-//            devData.info=data;
-            devData.setInfo(data);
-           // System.out.println(info);
+            if(keyword.equals("15-1252.00")){
+                data="Job Description: "+result.substring(385,532)+"Median Salary:$"+result.substring(1118,1124);
+            }else if(keyword.equals("15-1255.00")){
+                data="Job Description:"+ result.substring(340,496)+" Median Salary:$"+result.substring(1286,1291);
+            }else if(keyword.equals("15-1299.08")){
+                data="Job Description:"+ " Design and develop solutions to complex applications problems, system administration issues, or network concerns. Perform systems management and integration functions."+" Median Salary:$"+result.substring(637,642);
+            }else if(keyword.equals("15-1299.05")){
+                data="Job Description:"+"Build, maintain and upgrade security technology, such as firewalls, for the safe use of computer networks and the transmission and retrieval of information."+"Median Salary:$"+result.substring(630,635);
+            }else{
+                 data= "There's a problem";
+            }
+
+
+           this.info=data;
+           //System.out.println(info);
+
 
         } finally {
 
@@ -74,23 +87,26 @@ public class DevData {
 
         }
 
-        //Testing out how to get variables
 
 
 
     }
 
 
-    // Setter
-    public void setInfo(String value) {
-        this.info = value;
-    }
+    // dont need a Setter, see contructor
+
 
     // Getter
-    public static String getInfo() {
-        return info ;
+    public String getInfo() {
+
+        return this.info ;
     }
+
 
 
 
 }
+
+
+
+

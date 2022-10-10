@@ -2,7 +2,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Quiz quiz= new Quiz();
-        DevData devData=new DevData();
+      Quiz quiz= new Quiz();
+
     }
 }
