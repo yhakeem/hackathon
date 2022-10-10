@@ -16,16 +16,22 @@ public class Quiz implements ActionListener  {
             "How would you describe yourself?",
             "What's your favorite color",
             "If you had to pick a career what would it be? ",
-            "If you need help solving a problem who do you go to?"
+            "If you need help solving a problem who do you go to?",
+            "What is your favorite social media platform?",
+            "When you are having a rough day what makes you feel better?",
+            "If you had to be a celebrity who would you be?"
     };
 
     //stores all possible answers (array of arrays)
 
     String [][] options ={
-            {"Creative","Logical","Wise","Empathetic"},
-            {"Orange","Blue","Red","Green"},
-            {"Artist","Mathmatetician","Politics","Sports Coach"},
-            {"Coworker or Supervisor","Google","Stack Overflow","All of the above"}
+            {"Logical","Creative","Optimistic","Curious"},
+            {"Blue","Orange","Green","Red"},
+            {"Mathematician","Artist","Politics","Detective"},
+            {"Google","Coworker or Supervisor","Stack Overflow","All of the above"},
+            {"Reddit","Canva","Tiktok","Twitter"},
+            {"Reading","Drawing","Spending time with frieds","People watching"},
+            {"Elon Musk","Beyonce","Jeff Bezos","Sherlock Holmes"}
 
     };
     //skipped on guess and correct guess because we are not measuring that way see video at 12:24
@@ -91,10 +97,10 @@ public class Quiz implements ActionListener  {
         textfield.setBorder(BorderFactory.createBevelBorder(1));
         textfield.setHorizontalAlignment(JTextField.CENTER);
         textfield.setEditable(false);
-        textfield.setText("What Kind of Techie Are you??");
+        textfield.setText("What Kind of Techie Are you?");
 
 //text area
-        textarea.setBounds(0,50,650,50);
+        textarea.setBounds(0,50,650,60);
         textarea.setLineWrap(true);
         textarea.setWrapStyleWord(true);
         textarea.setBackground(new Color(127, 255, 212));
