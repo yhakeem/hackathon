@@ -68,7 +68,7 @@ public class Quiz implements ActionListener  {
     public Quiz()  {
         //frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(650,650);
+        frame.setSize(800,850);
         frame.setVisible(true);
         frame.getContentPane().setBackground(new Color(255,182,193));
         frame.setLayout(null);
@@ -89,7 +89,7 @@ public class Quiz implements ActionListener  {
 
 
 //text fields
-        textfield.setBounds(0,0,650,50);
+        textfield.setBounds(0,0,800,50);
         textfield.setBackground(new Color(127, 255, 212));
         textfield.setForeground(new Color(8, 143, 143));
         textfield.setFont(new Font("Ink Free",Font.PLAIN,30));
@@ -99,7 +99,7 @@ public class Quiz implements ActionListener  {
         textfield.setText("What Kind of Techie Are you?");
 
 //text area
-        textarea.setBounds(0,50,650,60);
+        textarea.setBounds(0,50,800,60);
         textarea.setLineWrap(true);
         textarea.setWrapStyleWord(true);
         textarea.setBackground(new Color(127, 255, 212));
@@ -158,7 +158,7 @@ public class Quiz implements ActionListener  {
         answer_labelD.setForeground(new Color(255,255,255));
         answer_labelD.setFont(new Font("Ink Well",Font.PLAIN,25));
 
-        percentage.setBounds(125,100,500,300);
+        percentage.setBounds(125,120,500,300);
         percentage.setBackground(new Color(255,255,255));
         percentage.setForeground(new Color(255,182,193));
         percentage.setFont(new Font("Ink Well",Font.PLAIN,25));
@@ -250,18 +250,22 @@ public class Quiz implements ActionListener  {
         if(mostAnswered==a){
             description="Software Developer";
             careerChoice="15-1252.00";
+            Image i=new Image("softwaredev.jpeg");
 
         }else if(mostAnswered==b){
             description="UX/UI Designer";
             careerChoice="15-1255.00";
+            Image i=new Image("designer.jpeg");
 
         }else if(mostAnswered==c){
             description="Solution Architect";
             careerChoice="15-1299.08";
+            Image i=new Image("istock-1154231467.jpeg");
 
         }else if (mostAnswered==d){
             description="Cyber Security Specialist";
             careerChoice="15-1299.05";
+            Image i=new Image("cyber.jpeg");
 
         }else{
             description="Please try again";
@@ -283,6 +287,8 @@ public class Quiz implements ActionListener  {
 
         //add to frame to view the percentage
         frame.add(percentage);
+
+
 
     }
 }

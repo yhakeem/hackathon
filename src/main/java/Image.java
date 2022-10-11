@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.util.Objects;
+
 
 public class Image extends JFrame {
 
@@ -7,23 +7,25 @@ public class Image extends JFrame {
     JLabel displayField;
     ImageIcon image;
 
-    public Image() {
-        frame = new JFrame("Image display test");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public Image(String picture) {
+     frame = new JFrame();
+       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         try {
-            image = new ImageIcon(Objects.requireNonNull(getClass().getResource("istock-1154231467.jpeg")));
-            displayField = new JLabel(image);
+            image = new ImageIcon((getClass().getResource(picture)));
+            System.out.println(image);
+
+           displayField = new JLabel(image);
+            frame.add(displayField);
         } catch (Exception e) {
             System.out.println("image not found");
         }
-        frame.pack();
-        frame.setVisible(true);
+       frame.setBounds(100,600,500,350);
+    frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        Image i=new Image();
+
     }
-}
+
 
 
 
