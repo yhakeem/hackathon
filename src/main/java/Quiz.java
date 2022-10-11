@@ -1,4 +1,3 @@
-import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -250,17 +249,17 @@ public class Quiz implements ActionListener  {
         if(mostAnswered==a){
             description="Software Developer";
             careerChoice="15-1252.00";
-            Image i=new Image("softwaredev.jpeg");
+            Image i=new Image("softwareDev.jpeg");
 
         }else if(mostAnswered==b){
             description="UX/UI Designer";
             careerChoice="15-1255.00";
-            Image i=new Image("designer.jpeg");
+            Image i=new Image("uxUi.jpeg");
 
         }else if(mostAnswered==c){
             description="Solution Architect";
             careerChoice="15-1299.08";
-            Image i=new Image("istock-1154231467.jpeg");
+            Image i=new Image("solutionArch.jpeg");
 
         }else if (mostAnswered==d){
             description="Cyber Security Specialist";

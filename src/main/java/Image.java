@@ -1,3 +1,4 @@
+//this file is used to add images to gui
 import javax.swing.*;
 
 
@@ -19,6 +20,7 @@ public class Image extends JFrame {
         } catch (Exception e) {
             System.out.println("image not found");
         }
+        frame.setSize(400,400);
        frame.setBounds(100,600,500,350);
     frame.setVisible(true);
     }
@@ -29,3 +31,4 @@ public class Image extends JFrame {
 
 
 
+// use video for refrence https://www.youtube.com/watch?v=ntirmRhy6Fw&t=300s
