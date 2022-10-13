@@ -28,11 +28,11 @@ public class Quiz implements ActionListener  {
             {"Mathematician","Artist","Politics","Detective"},
             {"Google","Coworker or Supervisor","Stack Overflow","All of the above"},
             {"Reddit","Canva","Tiktok","Twitter"},
-            {"Reading","Drawing","Spending time with frieds","People watching"},
+            {"Reading","Drawing","Spending time with friends","People watching"},
             {"Elon Musk","Beyonce","Jeff Bezos","Sherlock Holmes"}
 
     };
-    //skipped on guess and correct guess because we are not measuring that way see video at 12:24
+
     int index;
     int total_questions=questions.length;
     int result;
